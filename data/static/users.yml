@@ -252,3 +252,35 @@
   securityQuestion:
     id: 10
     answer: "Used Ship Emporium" # https://monkeyisland.fandom.com/wiki/Stan_S._Stanman
+-
+  email: osiakm
+  username: osiakm
+  password: 'password'
+  key: osiakm
+  role: 'customer'
+  address:
+    - fullName: 'Monika Osiak'
+      mobileNum: 1234567890
+      zipCode: '0662'
+      streetAddress: '0662 Koszykowa'
+      city: 'Warsaw'
+      state: 'Mazovian'
+      country: 'Poland'
+  card:
+    - fullName: 'Monika Osiak'
+      cardNum: 4716190207394444
+      expMonth: 1
+      expYear: 2090
+    - fullName: 'Monika Osiak'
+      cardNum: 4024007105648333
+      expMonth: 1
+      expYear: 2091 
+-
+  email: nicksuzuki
+  username: nicksuzuki
+  password: 'montrealcanadiens'
+  key: nicksuzuki
+  role: 'admin'
+  securityQuestion:
+    id: 10
+    answer: "Nie pytaj mnie o to..."

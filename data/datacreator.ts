@@ -643,8 +643,8 @@ async function createOrders () {
       delivered: true
     },
     {
-      orderId: security.hash('demo').slice(0, 4) + '-' + utils.randomHexString(16),
-      email: 'd*m*',
+      orderId: security.hash('osiakm@juice-sh.op').slice(0, 4) + '-' + utils.randomHexString(16),
+      email: 'os*a*m@j**c*-sh.*p',
       totalPrice: basket3Products[0].total + basket3Products[1].total,
       bonus: basket3Products[0].bonus + basket3Products[1].bonus,
       products: basket3Products,

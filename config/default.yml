@@ -93,6 +93,7 @@ products:
     image: apple_juice.jpg
     reviews:
       - { text: 'One of my favorites!', author: admin }
+      - { text: 'The best', author: osiakm}
   -
     name: 'Orange Juice (1000ml)'
     description: 'Made from oranges hand-picked by Uncle Dittmeyer.'
@@ -101,6 +102,7 @@ products:
     image: orange_juice.jpg
     reviews:
       - { text: 'y0ur f1r3wall needs m0r3 musc13', author: uvogin }
+      - { text: 'Yummy', author: nicksuzuki }
   -
     name: 'Eggfruit Juice (500ml)'
     description: 'Now with even more exotic flavour.'
