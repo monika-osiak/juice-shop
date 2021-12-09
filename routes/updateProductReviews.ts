@@ -8,18 +8,21 @@ const challenges = require('../data/datacache').challenges
 const db = require('../data/mongodb')
 const security = require('../lib/insecurity')
 
-// vuln-code-snippet start noSqlReviewsChallenge forgedReviewChallenge
+// vuln-code-snippet start noSqlReviewsChallenge forgedReviewChallenge RESOLVED
 module.exports = function productReviews () {
   return (req, res, next) => {
-    const user = security.authenticatedUsers.from(req) // vuln-code-snippet vuln-line forgedReviewChallenge
+    const user = security.authenticatedUsers.from(req)
+
+    if (typeof req.body.id !== 'string') {
+      res.status(400).send()
+      return
+    }
+
     db.reviews.update(
-      { _id: req.body.id }, // vuln-code-snippet vuln-line noSqlReviewsChallenge
-      { $set: { message: req.body.message } },
-      { multi: true } // vuln-code-snippet vuln-line noSqlReviewsChallenge
+      { _id: req.body.id },
+      { $set: { message: req.body.message } }
     ).then(
       result => {
-        utils.solveIf(challenges.noSqlReviewsChallenge, () => { return result.modified > 1 }) // vuln-code-snippet hide-line
-        utils.solveIf(challenges.forgedReviewChallenge, () => { return user?.data && result.original[0].author !== user.data.email && result.modified === 1 }) // vuln-code-snippet hide-line
         res.json(result)
       }, err => {
         res.status(500).json(err)
