@@ -60,14 +60,13 @@ export class SearchResultComponent implements OnDestroy, AfterViewInit {
     private readonly router: Router, private readonly route: ActivatedRoute, private readonly sanitizer: DomSanitizer, private readonly ngZone: NgZone, private readonly io: SocketIoService,
     private readonly snackBarHelperService: SnackBarHelperService, private readonly cdRef: ChangeDetectorRef) { }
 
-  // vuln-code-snippet start restfulXssChallenge
+  // vuln-code-snippet start restfulXssChallenge RESOLVED
   ngAfterViewInit () {
     const products = this.productService.search('')
     const quantities = this.quantityService.getAll()
     forkJoin([quantities, products]).subscribe(([quantities, products]) => {
       const dataTable: TableEntry[] = []
       this.tableData = products
-      this.trustProductDescription(products)
       for (const product of products) {
         dataTable.push({
           name: product.name,
@@ -99,10 +98,6 @@ export class SearchResultComponent implements OnDestroy, AfterViewInit {
       this.routerSubscription = this.router.events.subscribe(() => {
         this.filterTable()
       })
-      const challenge: string = this.route.snapshot.queryParams.challenge // vuln-code-snippet hide-start
-      if (challenge && this.route.snapshot.url.join('').match(/hacking-instructor/)) {
-        this.startHackingInstructor(decodeURIComponent(challenge))
-      } // vuln-code-snippet hide-end
       if (window.innerWidth < 2600) {
         this.breakpoint = 4
         if (window.innerWidth < 1740) {
